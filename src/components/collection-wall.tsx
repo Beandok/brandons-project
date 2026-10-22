@@ -1,0 +1,23 @@
+"use client";
+import { useMemo, useState } from "react";
+import type { Album } from "@/lib/discogs";
+function family(formats: string[]) {
+  if (formats.some(f=>/vinyl|^lp$/i.test(f))) return "Vinyl";
+  if (formats.some(f=>/^cd|cddr/i.test(f))) return "CD";
+  if (formats.some(f=>/cassette/i.test(f))) return "Cassette";
+  return "Other";
+}
+export function CollectionWall({ albums }: { albums: Album[] }) {
+  const [query,setQuery] = useState("");
+  const [format,setFormat] = useState("All");
+  const [sort,setSort] = useState("artist");
+  const [view,setView] = useState("shelf");
+  const [theme,setTheme] = useState("walnut");
+  const [message,setMessage] = useState("");
+  const [selected,setSelected] = useState<number | null>(null);
+  const options = ["All", ...Array.from(new Set(albums.map(a=>family(a.formats)))).sort()];
+  const visible = useMemo(()=>albums.filter(a=>(format === "All" || family(a.formats) === format) && `${a.artist} ${a.title} ${a.genres.join(" ")}`.toLowerCase().includes(query.toLowerCase())).sort((a,b)=>sort === "year" ? (b.year ?? 0)-(a.year ?? 0) : sort === "title" ? a.title.localeCompare(b.title) : a.artist.localeCompare(b.artist)),[albums,query,format,sort]);
+  async function share() { try { await navigator.clipboard.writeText(window.location.href); setMessage("Room link copied."); } catch { setMessage("Copy this page’s address to share your room."); } }
+  function surprise() { if (!visible.length) return; const a = visible[Math.floor(Math.random()*visible.length)]; setSelected(a.instanceId); document.getElementById(`album-${a.instanceId}`)?.scrollIntoView({behavior:"smooth",block:"center"}); setMessage(`Next on the turntable: ${a.artist} — ${a.title}`); }
+  return <section className={`collection-studio theme-${theme}`}><div className="studio-top"><div className="format-tabs" aria-label="Filter format">{options.map(o=><button key={o} aria-pressed={format===o} className={format===o ? "active" : ""} onClick={()=>setFormat(o)}>{o}<span>{o==="All" ? albums.length : albums.filter(a=>family(a.formats)===o).length}</span></button>)}</div><button className="quiet-button" onClick={share}>Share room ↗</button></div><div className="studio-tools"><label className="search-field"><span>⌕</span><input aria-label="Search collection" placeholder="Find an artist, album, or genre…" value={query} onChange={e=>setQuery(e.target.value)}/></label><div className="tool-options"><label className="sort-label">Sort by <select value={sort} onChange={e=>setSort(e.target.value)}><option value="artist">Artist A–Z</option><option value="title">Album A–Z</option><option value="year">Newest year</option></select></label><div className="view-toggle"><button aria-pressed={view==="shelf"} onClick={()=>setView("shelf")}>Shelf</button><button aria-pressed={view==="grid"} onClick={()=>setView("grid")}>Grid</button></div></div></div><div className="wall-meta"><span>{visible.length} RELEASES ON DISPLAY</span><div className="wall-colors"><span>WALL</span>{["walnut","cream","charcoal"].map(t=><button key={t} aria-label={`${t} wall`} aria-pressed={theme===t} className={`swatch ${t}`} onClick={()=>setTheme(t)}/>)}</div><button className="quiet-button" onClick={surprise} disabled={!visible.length}>Pick my next listen ⤮</button></div><p className="studio-message" role="status">{message}</p>{visible.length ? <ul className={`album-wall ${view}`}>{visible.map(a=><li id={`album-${a.instanceId}`} key={a.instanceId} className={selected===a.instanceId ? "chosen" : ""}><a href={`https://www.discogs.com/release/${a.releaseId}`} target="_blank" rel="noreferrer"><div className="album-cover">{a.coverImage ? <img src={a.coverImage} alt={`${a.artist} — ${a.title}`} loading="lazy" onError={e=>{e.currentTarget.style.display="none";}}/> : null}<div className="cover-placeholder"><span>◉</span><strong>{a.title}</strong><small>{a.artist}</small></div><span className="cover-link">View pressing ↗</span></div><div className="album-info"><h3>{a.title}</h3><p>{a.artist}</p><span>{a.year || "Year unknown"} · {family(a.formats)}</span></div></a></li>)}</ul> : <div className="empty-wall"><span>◉</span><h3>{albums.length ? "No records in this crate." : "Your shelf is waiting."}</h3><p>{albums.length ? "Try a different search or format." : "Add owned releases to your public Discogs collection to see them here."}</p>{albums.length > 0 && <button onClick={()=>{setQuery("");setFormat("All");}}>Clear filters</button>}</div>}<div className="collection-footnote">Collection data and cover images via Discogs. <a href="https://www.discogs.com" target="_blank" rel="noreferrer">Explore Discogs ↗</a></div></section>;
+}

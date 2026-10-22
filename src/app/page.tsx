@@ -1,69 +1,20 @@
-import Image from "next/image";
+import Link from "next/link";
+import { UsernameForm } from "@/components/username-form";
 
+const sleeves = [
+  { artist: "JOHN COLTRANE", title: "BLUE TRAIN", style: "blue", note: "The Blue Note collection" },
+  { artist: "SADE", title: "LOVE DELUXE", style: "clay", note: "A little soul goes a long way" },
+  { artist: "RADIOHEAD", title: "IN RAINBOWS", style: "orange", note: "For the late nights" },
+  { artist: "MILES DAVIS", title: "KIND OF BLUE", style: "night", note: "Always in rotation" },
+];
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <main className="home-room">
+    <nav className="site-nav"><Link className="wordmark" href="/">◉ SIDE A<span>A home for your collection</span></Link><a href="#how-it-works">How it works ↗</a></nav>
+    <section className="hero">
+      <div className="hero-copy"><p className="eyebrow"><span className="status-dot" /> FOR THE LOVE OF THE PHYSICAL</p><h1>Your music.<br />Off the shelf.<br /><em>On display.</em></h1><p className="intro">The records you hunted down. The CDs you grew up with. Give the music you own a room of its own.</p><UsernameForm /><p className="small-note">Powered by your public Discogs collection. No sign-up needed.</p><Link className="text-link" href="/demo">Take a look around the demo room <span>↗</span></Link></div>
+      <div className="room-preview" aria-label="Illustrated record shelf preview"><div className="room-label">THE LISTENING ROOM <span>VOL. 001</span></div><div className="preview-records">{sleeves.map((s,i)=><div className="preview-item" key={s.title}><div className={`art-sleeve ${s.style}`}><span>{s.artist}</span><strong>{s.title}</strong><div className="art-shape" /><small>SIDE A / {String(i+1).padStart(2,"0")}</small></div><p>{s.note}</p></div>)}</div><div className="room-caption"><span>Good music deserves to be seen.</span><span>33⅓ RPM</span></div></div>
+    </section>
+    <section id="how-it-works" className="how"><div><p className="eyebrow">YOUR COLLECTION, REINTRODUCED</p><h2>Less scrolling.<br /><em>More crate digging.</em></h2></div><article><span>01 / CONNECT</span><h3>Bring your Discogs.</h3><p>Enter your username to bring in the music in your public collection, including vinyl, CDs, and cassettes.</p></article><article><span>02 / MAKE IT YOURS</span><h3>Set the mood.</h3><p>Choose a shelf or gallery, change the wall color, and sort through your records your way.</p></article><article><span>03 / SHOW & TELL</span><h3>Share your taste.</h3><p>Send someone your room link. Every cover leads back to the exact release on Discogs.</p></article></section>
+    <footer><Link className="wordmark" href="/">◉ SIDE A</Link><p>A little space for the music that matters.</p><a href="https://www.discogs.com" target="_blank" rel="noreferrer">Collection data by Discogs ↗</a></footer>
+  </main>;
 }

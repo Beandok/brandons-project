@@ -1,43 +1,41 @@
-# Lettuce Boilerplate 🥬
+# Side A
 
-A bare-bones starter for **Next.js + Better Auth + Supabase (Postgres) + Drizzle ORM**, deployed on **Vercel**. Uses plain `npm`.
+A virtual listening room for physically owned music, built with Next.js 16, React, and TypeScript. Enter a Discogs username to display the public collection as a shelf or gallery.
 
-The tools are installed but intentionally **not wired up** — no auth config, no database schema, no migrations. Build those for your own project.
+## Run locally
 
-## What's included
+Requires Node.js 24 or newer.
 
-| Tool | Package(s) | Status |
-| --- | --- | --- |
-| Next.js (App Router, TypeScript, Tailwind, ESLint) | `next`, `react`, `react-dom` | Default starter page |
-| Better Auth | `better-auth` | Installed, not configured |
-| Drizzle ORM | `drizzle-orm`, `drizzle-kit` (dev) | Installed, no schema/config |
-| Postgres driver for Supabase | `postgres` | Installed |
-| Vercel | — | Deploys out of the box |
-
-Also: `.env.example`, `.gitignore`, `.nvmrc`, recommended VS Code / Cursor extensions (`.vscode/extensions.json`), and a `CLAUDE.md` with project rules for Claude Code.
-
-## Getting started
-
-```bash
+```sh
 npm install
-cp .env.example .env.local   # then fill in real values
 npm run dev
 ```
 
-Open http://localhost:3000.
+Open http://localhost:3000. Try `/demo` for a self-contained example with original illustrative sleeve artwork, or `/collection/YOUR_USERNAME` for a live collection.
 
-## Environment variables
+## Features
 
-See `.env.example`. In short:
+- Public Discogs collection import, including vinyl, CD, and cassette
+- Shelf and gallery layouts; walnut, cream, and charcoal walls
+- Artist, album, and genre search; format filtering and sorting
+- Random next-listen selection and copyable room links
+- Exact release links, image fallbacks, responsive layouts, and accessible controls
+- Hourly server caching, request timeouts, and friendly import errors
 
-- `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` — for Better Auth.
-- `DATABASE_URL` — Supabase **transaction pooler** (port 6543), used by the app. Use `prepare: false` with the `postgres` client.
-- `DATABASE_URL_SESSION` — Supabase **session pooler** (port 5432), used only for migrations.
+The import currently displays up to 1,000 releases. Enable public collection browsing in Discogs privacy settings. Collection changes can take up to an hour to appear. This app displays the Discogs collection; it cannot independently verify physical ownership.
 
-Never commit `.env.local`. On Vercel, add these under Project → Settings → Environment Variables.
+## Environment
 
-## Next steps (not done for you)
+Public collections can be read without credentials. An optional server-only `DISCOGS_TOKEN` can be set in `.env.local` or your hosting provider's environment settings for Discogs API authentication. Do not commit tokens. Authentication/database variables in `.env.example` belong to the retained starter and are not needed by Side A.
 
-- Better Auth: create `src/lib/auth.ts`, an auth client, and the `/api/auth/[...all]` route — see https://www.better-auth.com/docs/installation
-- Drizzle: add `drizzle.config.ts`, a schema file, and a `db` client — see https://orm.drizzle.team/docs/get-started/supabase-new
-- Deploy: import the repo at https://vercel.com/new
+## Validate and deploy
+
+```sh
+npm run lint
+npm run build
+npm start
+```
+
+Import this GitHub repository into Vercel using its Next.js preset, or use a Node.js host with the production commands above. This is a server-rendered app and is not a static GitHub Pages export. Share room links using the deployed site's address.
+
+Collection metadata and cover images are provided by [Discogs](https://www.discogs.com). The demo uses original illustrations, not actual album covers. This project is not affiliated with Discogs.

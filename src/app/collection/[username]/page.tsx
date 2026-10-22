@@ -9,7 +9,8 @@ export default function CollectionPage({ params }: PageProps<"/collection/[usern
   return <main><Suspense fallback={<CollectionFallback/>}><ResolvedCollection params={params}/></Suspense></main>;
 }
 async function ResolvedCollection({params}:{params:PageProps<"/collection/[username]">["params"]}) {
-  const {username} = await params;
+  const {username: rawUsername} = await params;
+  const username = rawUsername.trim().replace(/^@/, "");
   if (!isValidDiscogsUsername(username)) return <div className="error-page"><h1>That username looks off.</h1><p>Use your Discogs username with letters, numbers, dots, underscores, or dashes.</p><UsernameForm/></div>;
   return <CollectionView username={username}/>;
 }

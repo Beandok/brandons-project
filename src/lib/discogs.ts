@@ -88,10 +88,17 @@ function discogsHeaders(): HeadersInit {
 }
 
 async function discogsGet(path: string): Promise<Response> {
-  return fetch(`${DISCOGS_API}${path}`, {
-    headers: discogsHeaders(),
-    signal: AbortSignal.timeout(15000),
-  });
+  try {
+    return await fetch(`${DISCOGS_API}${path}`, {
+      headers: discogsHeaders(),
+      signal: AbortSignal.timeout(15000),
+    });
+  } catch {
+    throw new DiscogsError(
+      "The server could not connect to Discogs. Check the server's internet connection and DNS access to api.discogs.com, then try again. Your username or collection privacy has not been verified.",
+      503,
+    );
+  }
 }
 
 function cleanArtistName(name: string) {

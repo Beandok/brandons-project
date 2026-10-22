@@ -9,7 +9,7 @@ export function UsernameForm({ initialUsername = "", compact = false }: { initia
   const [pending, startTransition] = useTransition();
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const value = username.trim();
+    const value = username.trim().replace(/^@/, "");
     if (!/^[A-Za-z0-9._-]{1,40}$/.test(value)) { setError("Enter a Discogs username using letters, numbers, dots, dashes, or underscores."); return; }
     setError(""); startTransition(()=>router.push(`/collection/${encodeURIComponent(value)}`));
   }

@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lettuce Boilerplate 🥬
 
-## Getting Started
+A bare-bones starter for **Next.js + Better Auth + Supabase (Postgres) + Drizzle ORM**, deployed on **Vercel**. Uses plain `npm`.
 
-First, run the development server:
+The tools are installed but intentionally **not wired up** — no auth config, no database schema, no migrations. Build those for your own project.
+
+## What's included
+
+| Tool | Package(s) | Status |
+| --- | --- | --- |
+| Next.js (App Router, TypeScript, Tailwind, ESLint) | `next`, `react`, `react-dom` | Default starter page |
+| Better Auth | `better-auth` | Installed, not configured |
+| Drizzle ORM | `drizzle-orm`, `drizzle-kit` (dev) | Installed, no schema/config |
+| Postgres driver for Supabase | `postgres` | Installed |
+| Vercel | — | Deploys out of the box |
+
+Also: `.env.example`, `.gitignore`, `.nvmrc`, recommended VS Code / Cursor extensions (`.vscode/extensions.json`), and a `CLAUDE.md` with project rules for Claude Code.
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local   # then fill in real values
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See `.env.example`. In short:
 
-## Learn More
+- `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` — for Better Auth.
+- `DATABASE_URL` — Supabase **transaction pooler** (port 6543), used by the app. Use `prepare: false` with the `postgres` client.
+- `DATABASE_URL_SESSION` — Supabase **session pooler** (port 5432), used only for migrations.
 
-To learn more about Next.js, take a look at the following resources:
+Never commit `.env.local`. On Vercel, add these under Project → Settings → Environment Variables.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Next steps (not done for you)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Better Auth: create `src/lib/auth.ts`, an auth client, and the `/api/auth/[...all]` route — see https://www.better-auth.com/docs/installation
+- Drizzle: add `drizzle.config.ts`, a schema file, and a `db` client — see https://orm.drizzle.team/docs/get-started/supabase-new
+- Deploy: import the repo at https://vercel.com/new

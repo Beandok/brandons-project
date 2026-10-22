@@ -23,6 +23,17 @@ The person you're talking to is a beginner who has never coded before.
 - Vercel for hosting.
 - Do not add new packages without asking and explaining what the package does.
 
+## Database migrations (codebase first)
+The TypeScript Drizzle schema is the single source of truth for the database. Drizzle generates SQL migration files from it, and those files are applied to the database.
+- To change the database, edit the Drizzle schema file in the code. Never change tables by hand in the Supabase dashboard or with raw SQL.
+- After a schema change, run `npx drizzle-kit generate` to create a new SQL migration file in the `drizzle/` folder. Explain in plain words what the generated SQL will do before applying it.
+- Apply migrations with `npx drizzle-kit migrate`, connected through the session pooler (port 5432, `DATABASE_URL_SESSION`).
+- Never use `drizzle-kit push`. It changes the database without leaving a migration file behind.
+- If `drizzle-kit generate` asks whether something was renamed or is new, stop and ask the user. A wrong answer can delete a column and its data.
+- If a migration would drop or rename a table or column, or delete data, explain that and ask before generating or applying it.
+- Commit the schema change and its migration file together in the same save point.
+- Never edit or delete a migration file that has already been applied. Fix mistakes with a new migration instead.
+
 ## Safety rules
 - Every server action and API route gets the session from Better Auth first, and only returns or changes that user's data.
 - Never put secrets or API keys in code. They go in .env.local, which is never committed.

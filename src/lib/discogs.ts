@@ -14,6 +14,7 @@ export type Album = {
   year: number | null;
   coverImage: string | null;
   formats: string[];
+  formatDetails?: { name: string; quantity: number | null; descriptions: string[]; text: string | null }[];
   genres: string[];
 };
 
@@ -50,6 +51,8 @@ type DiscogsArtist = {
 
 type DiscogsFormat = {
   name: string;
+  qty?: string;
+  text?: string;
   descriptions?: string[];
 };
 
@@ -156,6 +159,12 @@ function toAlbum(release: DiscogsRelease): Album {
     year: info.year || null,
     coverImage: cover && !cover.includes("spacer.gif") ? cover : null,
     formats: formatLabels(info.formats),
+    formatDetails: info.formats?.map(format => ({
+      name: format.name,
+      quantity: format.qty && Number.isFinite(Number(format.qty)) ? Number(format.qty) : null,
+      descriptions: format.descriptions ?? [],
+      text: format.text ?? null,
+    })),
     genres: info.genres ?? [],
   };
 }

@@ -1,11 +1,4 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Side A — A home for your music collection",
-  description: "Turn your physically owned vinyl, CDs, and cassettes into a virtual listening room with your Discogs collection.",
-};
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
-  return <html lang="en"><body>{children}</body></html>;
-}
+import type { Metadata } from 'next';
+import './globals.css';
+export const metadata: Metadata = {title:'Common Ground — Physiology, with perspective',description:'A source-grounded bioenergetic research companion. Explore mechanisms, competing explanations and the limits of the evidence.'};
+export default function RootLayout({children}:Readonly<{children:React.ReactNode}>){return <html lang="en"><body>{children}</body></html>;}

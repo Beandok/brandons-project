@@ -1,0 +1,18 @@
+import fs from 'node:fs/promises';
+import ts from 'typescript';
+import assert from 'node:assert/strict';
+const source=await fs.readFile('src/lib/research/sources.ts','utf8');
+const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ES2022,target:ts.ScriptTarget.ES2022}}).outputText;
+const {sources,curatedAnswer,rankSources,safetyConcern}=await import(`data:text/javascript;base64,${Buffer.from(js).toString('base64')}`);
+assert(safetyConcern('hives and trouble breathing right now'));
+assert(safetyConcern('my throat is swelling'));
+assert(!safetyConcern('itching, no trouble breathing'));
+assert(curatedAnswer('trouble breathing').urgent);
+assert(!curatedAnswer('I have a headache').focused);
+assert.equal(rankSources('hot shower hives')[0].id,'skin-2014');
+assert(rankSources('taurine').some(s=>s.id==='tau-2020'));
+assert.equal(new Set(sources.map(s=>s.id)).size,sources.length);
+assert(sources.every(s=>new URL(s.url).protocol==='https:'));
+assert(curatedAnswer('hot shower hives').overview.includes('cannot establish'));
+console.log('Research checks passed: triage examples, retrieval relevance, evidence boundaries and source IDs.');
+if(process.argv.includes('--export-seed')) await fs.writeFile('data/approved-documents.json',JSON.stringify(sources.map(s=>({...s,permission:'original-summary'})),null,2));

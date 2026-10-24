@@ -1,41 +1,43 @@
-# Side A
+# Common Ground
 
-A virtual listening room for physically owned music, built with Next.js 16, React, and TypeScript. Enter a Discogs username to display the public collection as a shelf or gallery.
+A symptom-based bioenergetic research companion built with Next.js 16, TypeScript and Tailwind CSS. The homepage is a new app; earlier music routes remain in the repository as legacy work.
 
-## Run locally
+## Run
 
-Requires Node.js 24 or newer.
+`npm install`, then `npm run dev`. Open http://localhost:3000.
 
-```sh
-npm install
-npm run dev
-```
+The curated heat/itching/taurine example works without credentials. It is labeled as curated, not live AI. Other questions retrieve matching summaries but do not receive invented case-specific explanations.
 
-Open http://localhost:3000. Try `/demo` for a self-contained example with original illustrative sleeve artwork, or `/collection/YOUR_USERNAME` for a live collection.
+## Enable live synthesis
 
-## Features
+Copy `.env.example` to `.env.local`. Set `OPENAI_API_KEY` and optionally `OPENAI_MODEL`. Calls and credentials stay server-side. Submitted symptom text goes to the server and, when enabled, OpenAI. No conversations are written to the server database. Save buttons opt into browser-local storage; saved health text is accessible to other users of the same browser.
 
-- Public Discogs collection import, including vinyl, CD, and cassette
-- Shelf and gallery layouts; walnut, cream, and charcoal walls
-- Artist, album, and genre search; format filtering and sorting
-- Random next-listen selection and copyable room links
-- Exact release links, image fallbacks, responsive layouts, and accessible controls
-- Hourly server caching, request timeouts, and friendly import errors
+## Enable hybrid retrieval
 
-The import currently displays up to 1,000 releases. Enable public collection browsing in Discogs privacy settings. Collection changes can take up to an hour to appear. This app displays the Discogs collection; it cannot independently verify physical ownership.
+Use a PostgreSQL database supporting pgvector and set `DATABASE_URL`. Run:
 
-## Environment
+`node --env-file=.env.local scripts/ingest.mjs data/approved-documents.json`
 
-Public collections can be read without credentials. An optional server-only `DISCOGS_TOKEN` can be set in `.env.local` or your hosting provider's environment settings for Discogs API authentication. Do not commit tokens. Authentication/database variables in `.env.example` belong to the retained starter and are not needed by Side A.
+The ingestion command creates the table, generates 1536-dimensional embeddings and upserts approved passages. It requires a permission category and source metadata. It never crawls a website. Retrieval combines vector and PostgreSQL full-text rankings with reciprocal rank fusion. Without both credentials, the app uses local keyword ranking. Provider/database failures fall back to the labeled curated experience.
 
-## Validate and deploy
+Add passages only where original-summary, licensed or public-domain use is justified. Keep excerpts short; preserve author, source URL, evidence type and attribution category. A label alone does not grant permission. Interview timestamps must come from verified transcript records. Community emails require provenance and permission. Recipeats and Bioenergetic.life currently link out only.
 
-```sh
-npm run lint
-npm run build
-npm start
-```
+## Architecture
 
-Import this GitHub repository into Vercel using its Next.js preset, or use a Node.js host with the production commands above. This is a server-rendered app and is not a static GitHub Pages export. Share room links using the deployed site's address.
+- `src/app/page.tsx`: responsive conversational workspace, source library, device-local saves, mechanism explorer and theme switch.
+- `src/app/api/research/route.ts`: input limits, initial safety screening, retrieval, server-side LLM call, output shape/citation-ID validation and honest fallback.
+- `src/lib/research/sources.ts`: original summaries, keyword ranking, curated example and safety gate.
+- `src/lib/research/retrieval.ts`: optional pgvector/keyword search.
+- `scripts/ingest.mjs`, `data/schema.sql`: approved ingestion and database setup.
 
-Collection metadata and cover images are provided by [Discogs](https://www.discogs.com). The demo uses original illustrations, not actual album covers. This project is not affiliated with Discogs.
+## Verification
+
+`npm run build`
+
+`node scripts/check-research.mjs`
+
+## Deploy on Vercel
+
+Import this GitHub repository using the Next.js preset. Add environment variables in Vercel for live services. Without them the curated preview is usable. Rebuild after environment changes.
+
+This is a research MVP, not a validated medical service. Keyword screening is incomplete and cannot rule out emergencies. Generated citation IDs are checked against retrieved sources, but automatic ID checks do not prove that a citation entails a claim. Broader clinical coverage, structured claim-level evidence review, adversarial safety evaluation, rate limiting/abuse protection and an appropriate privacy review are needed before a public health product launch. There are no supplement doses or diagnostic scores. The diagram is a fixed illustrative case and never presented as a personalized inferred pathway.

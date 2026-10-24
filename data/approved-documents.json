@@ -1,0 +1,79 @@
+[
+  {
+    "id": "skin-2014",
+    "title": "Clinical Characteristics of Cholinergic Urticaria in Korea",
+    "author": "Kim et al.",
+    "year": "2014",
+    "kind": "Scientific evidence",
+    "evidence": "Human observational study",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4037671/",
+    "passage": "A clinical cohort describes cholinergic urticaria associated with increases in body temperature and triggers such as exercise. Trigger patterns help characterize the condition; they do not establish a diagnosis from a text description.",
+    "tags": [
+      "heat",
+      "hot",
+      "shower",
+      "hives",
+      "itch",
+      "skin",
+      "sweat",
+      "urticaria",
+      "exercise"
+    ],
+    "permission": "original-summary"
+  },
+  {
+    "id": "tau-2020",
+    "title": "Taurine chloramine selectively regulates neutrophil degranulation",
+    "author": "Kim et al.",
+    "year": "2020",
+    "kind": "Scientific evidence",
+    "evidence": "Experimental cell research",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/32865666/",
+    "passage": "This experimental study investigated taurine chloramine and neutrophil degranulation, including myeloperoxidase and lactoferrin. A derivative acting in cells is not evidence that oral taurine treats heat-triggered hives.",
+    "tags": [
+      "taurine",
+      "inflammation",
+      "chloramine",
+      "neutrophil",
+      "skin"
+    ],
+    "permission": "original-summary"
+  },
+  {
+    "id": "tau-1995",
+    "title": "Taurine chloramine and macrophage inflammatory mediators",
+    "author": "Marcinkiewicz et al.",
+    "year": "1995",
+    "kind": "Scientific evidence",
+    "evidence": "In vitro research",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7499964/",
+    "passage": "Taurine chloramine reduced production of certain inflammatory mediators in vitro. These findings do not demonstrate a clinical effect of taurine supplementation or establish the cause of an individual response.",
+    "tags": [
+      "taurine",
+      "inflammation",
+      "chloramine",
+      "macrophage"
+    ],
+    "permission": "original-summary"
+  },
+  {
+    "id": "peat-autonomic",
+    "title": "Autonomic systems",
+    "author": "Ray Peat",
+    "year": "Undated article",
+    "kind": "Ray Peat’s position",
+    "evidence": "Author’s physiological interpretation",
+    "url": "https://raypeat.com/articles/other/autonomic-systems.shtml",
+    "passage": "Peat frames cells and nervous systems as adaptive systems responsive to their environment. His broader account links nervous excitation, metabolism and signaling substances; this is an interpretive framework, not clinical confirmation of a symptom explanation.",
+    "tags": [
+      "peat",
+      "metabolism",
+      "stress",
+      "histamine",
+      "autonomic",
+      "energy",
+      "thyroid"
+    ],
+    "permission": "original-summary"
+  }
+]

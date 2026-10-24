@@ -6,7 +6,7 @@ A symptom-based bioenergetic research companion built with Next.js 16, TypeScrip
 
 `npm install`, then `npm run dev`. Open http://localhost:3000.
 
-The curated heat/itching/taurine example works without credentials. It is labeled as curated, not live AI. Other questions retrieve matching summaries but do not receive invented case-specific explanations.
+Three source-grounded prepared guides work without credentials: hair loss, urticaria/itching, and menstrual/uterine cramps. They are explicitly labeled as prepared, not live AI. The homepage starts with one question rather than an unsolicited example answer. It presents a concise overview, Peat's position, clinical evidence and uncertainty; mechanisms, competing explanations and source summaries expand on demand.
 
 ## Enable live synthesis
 
@@ -26,7 +26,8 @@ Add passages only where original-summary, licensed or public-domain use is justi
 
 - `src/app/page.tsx`: responsive conversational workspace, source library, device-local saves, mechanism explorer and theme switch.
 - `src/app/api/research/route.ts`: input limits, initial safety screening, retrieval, server-side LLM call, output shape/citation-ID validation and honest fallback.
-- `src/lib/research/sources.ts`: original summaries, keyword ranking, curated example and safety gate.
+- `src/lib/research/sources.ts`: original summaries, keyword ranking, focused guide selection and safety gates.
+- `src/lib/research/topics.ts`: source summaries, three prepared guides and pattern-specific mechanism variants.
 - `src/lib/research/retrieval.ts`: optional pgvector/keyword search.
 - `scripts/ingest.mjs`, `data/schema.sql`: approved ingestion and database setup.
 
@@ -40,4 +41,14 @@ Add passages only where original-summary, licensed or public-domain use is justi
 
 Import this GitHub repository using the Next.js preset. Add environment variables in Vercel for live services. Without them the curated preview is usable. Rebuild after environment changes.
 
-This is a research MVP, not a validated medical service. Keyword screening is incomplete and cannot rule out emergencies. Generated citation IDs are checked against retrieved sources, but automatic ID checks do not prove that a citation entails a claim. Broader clinical coverage, structured claim-level evidence review, adversarial safety evaluation, rate limiting/abuse protection and an appropriate privacy review are needed before a public health product launch. There are no supplement doses or diagnostic scores. The diagram is a fixed illustrative case and never presented as a personalized inferred pathway.
+This is a research MVP, not a validated medical service. Keyword screening is incomplete and cannot rule out emergencies. Generated citation IDs are checked against retrieved sources, but automatic ID checks do not prove that a citation entails a claim. Broader clinical coverage, structured claim-level evidence review, adversarial safety evaluation, rate limiting/abuse protection and an appropriate privacy review are needed before a public health product launch. There are no supplement doses or diagnostic scores. Diagrams are prepared educational models selected for the topic/pattern, never AI-inferred personal diagnoses. Pattern thinning uses a miniaturization model; diffuse shedding uses a hair-cycle model; hives are not always assumed to be heat-triggered.
+
+## Focused source coverage
+
+16 original editorial summaries link to identifiable Peat articles, specialist guidance, clinical reviews and experimental studies. Peat entries include a locator into the original article. Source dates are left undated when publication timing is not established; a check date is not a publication date. Regenerate the approved ingestion seed with `node scripts/check-research.mjs --export-seed`, then re-run ingestion to update PostgreSQL. Focused retrieval always retains a Peat primary-author summary and clinical comparators, even when a database is configured but stale.
+
+## PeatBot comparisons
+
+No verified public PeatBot API is connected. The optional comparison field accepts up to 3,000 characters of pasted AI output. It goes to the model provider only when live AI is enabled and is explicitly unverified comparison data, never a source or a Peat quotation. In prepared mode, no evaluation of the pasted answer is claimed. Never paste private health or third-party identifying information unnecessarily.
+
+Live responses must separately cite Peat's position and clinical evidence, with validation against retrieved IDs and attribution categories. Citation validation is not entailment verification: human evaluation is still needed. Unsupported and multi-topic questions do not silently receive a prepared answer for the wrong concern. Pregnancy with pelvic pain takes a prompt-care path before any model call; this keyword screening remains incomplete, not a validated triage system.

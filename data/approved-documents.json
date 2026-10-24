@@ -19,7 +19,8 @@
       "urticaria",
       "exercise"
     ],
-    "permission": "original-summary"
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
   },
   {
     "id": "tau-2020",
@@ -37,7 +38,8 @@
       "neutrophil",
       "skin"
     ],
-    "permission": "original-summary"
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
   },
   {
     "id": "tau-1995",
@@ -54,17 +56,19 @@
       "chloramine",
       "macrophage"
     ],
-    "permission": "original-summary"
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
   },
   {
     "id": "peat-autonomic",
     "title": "Autonomic systems",
     "author": "Ray Peat",
     "year": "Undated article",
-    "kind": "Ray Peat’s position",
-    "evidence": "Author’s physiological interpretation",
+    "kind": "Ray Peat's position",
+    "evidence": "Author's physiological interpretation",
     "url": "https://raypeat.com/articles/other/autonomic-systems.shtml",
-    "passage": "Peat frames cells and nervous systems as adaptive systems responsive to their environment. His broader account links nervous excitation, metabolism and signaling substances; this is an interpretive framework, not clinical confirmation of a symptom explanation.",
+    "locator": "Paragraphs beginning: When nutrition and thyroid function; Parasympathetic nerves, pituitary hormones and mast cells",
+    "passage": "Peat discusses estrogen-associated histamine release from ovarian mast cells and proposes that nutrition, thyroid function and environment influence autonomic signaling. This interpretive framework and ovarian observations do not establish the cause of skin hives or thyroid dysfunction in a reader.",
     "tags": [
       "peat",
       "metabolism",
@@ -74,6 +78,270 @@
       "energy",
       "thyroid"
     ],
-    "permission": "original-summary"
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "hair-cycle",
+    "title": "Telogen effluvium",
+    "author": "British Association of Dermatologists",
+    "year": "2025",
+    "kind": "Scientific evidence",
+    "evidence": "Specialist patient guidance",
+    "url": "https://www.bad.org.uk/pils/telogen-effluvium",
+    "passage": "A disruption of the hair cycle can shift more follicles into a resting/shedding phase. Visible diffuse shedding may follow a trigger by months. This is not the same as pattern miniaturization, and both may occur together. Management starts with the clinical pattern and relevant history.",
+    "tags": [
+      "hair",
+      "shedding",
+      "telogen",
+      "cycle",
+      "illness",
+      "stress"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "hives-acaa",
+    "title": "Chronic Spontaneous/Idiopathic Urticaria",
+    "author": "American College of Allergy, Asthma & Immunology",
+    "year": "Undated; checked Oct 2026",
+    "kind": "Scientific evidence",
+    "evidence": "Specialist patient guidance",
+    "url": "https://acaai.org/allergies/allergic-conditions/skin-allergy/chronic-hives/",
+    "passage": "Chronic spontaneous hives often lack an identifiable cause; in most patients they are not caused by food allergy. H1 antihistamines block histamine effects and are a main treatment. Some cases associate with thyroid disease, but hives alone do not establish it. Persistent hives merit clinical evaluation.",
+    "tags": [
+      "urticaria",
+      "hives",
+      "histamine",
+      "antihistamine",
+      "chronic",
+      "thyroid",
+      "food"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "peat-hair",
+    "title": "Tryptophan, serotonin, and aging",
+    "author": "Ray Peat",
+    "year": "Undated article",
+    "kind": "Ray Peat's position",
+    "evidence": "Author hypothesis; not a treatment trial",
+    "url": "https://raypeat.com/articles/aging/tryptophasserotoninandaging.shtml",
+    "locator": "Paragraph beginning: In white hair, the amount of tryptophan",
+    "passage": "Peat speculates that hair loss associated with hypothyroidism, the postpartum period and certain drugs could involve serotonin excess. He also discusses serotonin, connective-tissue formation and impaired glucose oxidation. These proposed links do not prove an individual cause or show that lowering serotonin restores hair.",
+    "tags": [
+      "hair",
+      "hairloss",
+      "balding",
+      "shedding",
+      "alopecia",
+      "serotonin",
+      "thyroid",
+      "postpartum"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "hair-shedding",
+    "title": "Do you have hair loss or hair shedding?",
+    "author": "American Academy of Dermatology",
+    "year": "Undated; checked Oct 2026",
+    "kind": "Scientific evidence",
+    "evidence": "Dermatology patient guidance",
+    "url": "https://www.aad.org/public/diseases/hair-loss/insider/shedding",
+    "passage": "Excess shedding can follow illness, childbirth, weight loss or major stress, often with a delay of months. This differs from gradual hereditary thinning. Both can coexist, and a dermatologist can distinguish them. Do not abruptly stop a suspected medication.",
+    "tags": [
+      "hair",
+      "hairloss",
+      "shedding",
+      "diffuse",
+      "postpartum",
+      "stress",
+      "illness",
+      "temples",
+      "crown"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "hair-causes",
+    "title": "Hair loss: Who gets and causes",
+    "author": "American Academy of Dermatology",
+    "year": "Undated; checked Oct 2026",
+    "kind": "Scientific evidence",
+    "evidence": "Dermatology patient guidance",
+    "url": "https://www.aad.org/public/diseases/hair-loss/causes/18-causes",
+    "passage": "Hair loss has multiple causes, including hereditary follicle changes, immune-mediated patchy loss, traction, scalp disorders, thyroid disease and nutritional deficiency. Pattern and scalp examination guide evaluation. A symptom alone cannot identify a deficiency.",
+    "tags": [
+      "hair",
+      "hairloss",
+      "alopecia",
+      "patchy",
+      "scalp",
+      "traction",
+      "thyroid",
+      "iron",
+      "deficiency",
+      "dht"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "hair-androgens",
+    "title": "Androgens and alopecia",
+    "author": "Kaufman",
+    "year": "2002",
+    "kind": "Scientific evidence",
+    "evidence": "Review of androgen-related hair biology",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12573818/",
+    "passage": "Androgens affect human hair differently by body site. This review discusses androgen-dependent scalp follicle miniaturization and pattern hair loss. Local follicle sensitivity matters; hair loss alone does not establish abnormal blood hormone levels.",
+    "tags": [
+      "hair",
+      "hairloss",
+      "androgen",
+      "dht",
+      "temples",
+      "crown",
+      "balding",
+      "pattern"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "peat-progesterone",
+    "title": "Progesterone Summaries",
+    "author": "Ray Peat",
+    "year": "Undated article",
+    "kind": "Ray Peat's position",
+    "evidence": "Author physiological interpretation",
+    "url": "https://raypeat.com/articles/articles/progesterone-summaries.shtml",
+    "locator": "PROGESTERONE INFORMATION; opening paragraphs",
+    "passage": "Peat describes progesterone as involved in adaptation, stress resistance and balancing estrogen effects. This supplies context for his hormonal framework, not direct evidence for treating menstrual cramps or inferring progesterone deficiency from pain.",
+    "tags": [
+      "cramps",
+      "cramping",
+      "uterus",
+      "uterine",
+      "menstrual",
+      "period",
+      "progesterone",
+      "estrogen"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "peat-uterus",
+    "title": "Not the female hormone, but the shock hormone",
+    "author": "Ray Peat",
+    "year": "Undated article",
+    "kind": "Ray Peat's position",
+    "evidence": "Author interpretation citing historical experiments",
+    "url": "https://raypeat.com/articles/hormones/h1.shtml",
+    "locator": "Paragraph beginning: Histamine mimics estrogen",
+    "passage": "Peat discusses similarities between histamine and estrogen effects in the uterus, citing historical research. This is indirect mechanistic context; it does not establish that cramps indicate excess estrogen or that antihistamines or progesterone are appropriate treatments.",
+    "tags": [
+      "cramps",
+      "cramping",
+      "uterus",
+      "uterine",
+      "menstrual",
+      "histamine",
+      "estrogen"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "cramps-acog",
+    "title": "Dysmenorrhea: Painful Periods",
+    "author": "American College of Obstetricians and Gynecologists",
+    "year": "Undated; checked Oct 2026",
+    "kind": "Scientific evidence",
+    "evidence": "Professional patient guidance",
+    "url": "https://www.acog.org/womens-health/faqs/dysmenorrhea-painful-periods",
+    "passage": "In primary dysmenorrhea, prostaglandins contribute to uterine muscle and blood-vessel contraction. Pain can also have secondary causes. Heat and exercise may help; medication choices require individual suitability. A period-pain framework should not be assumed for unexplained pelvic pain.",
+    "tags": [
+      "cramps",
+      "cramping",
+      "uterus",
+      "uterine",
+      "period",
+      "menstrual",
+      "prostaglandin",
+      "dysmenorrhea",
+      "pelvic"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "cramps-review",
+    "title": "Primary Dysmenorrhea: Diagnosis and Therapy",
+    "author": "Ferries-Rowe et al.",
+    "year": "2020",
+    "kind": "Scientific evidence",
+    "evidence": "Clinical review",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/33030880/",
+    "passage": "Primary dysmenorrhea is linked to cyclooxygenase-mediated prostanoid production. Prostaglandin-related contractions and altered uterine perfusion help explain menstrual pain, without proving a generalized hormone imbalance.",
+    "tags": [
+      "cramps",
+      "cramping",
+      "uterine",
+      "period",
+      "prostaglandin",
+      "dysmenorrhea",
+      "cox"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "cramps-secondary",
+    "title": "ACOG Committee Opinion No. 760: Dysmenorrhea and Endometriosis in the Adolescent",
+    "author": "ACOG",
+    "year": "2018",
+    "kind": "Scientific evidence",
+    "evidence": "Clinical guidance; adolescent population",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30461694/",
+    "passage": "The guidance distinguishes primary dysmenorrhea from pelvic pathology. Persistent significant menstrual pain despite appropriate treatment warrants evaluation for secondary causes, including endometriosis. Not all painful periods imply endometriosis.",
+    "tags": [
+      "cramps",
+      "cramping",
+      "period",
+      "menstrual",
+      "endometriosis",
+      "persistent",
+      "pelvic"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
+  },
+  {
+    "id": "pelvic-safety",
+    "title": "Ectopic Pregnancy",
+    "author": "ACOG",
+    "year": "Undated; checked Oct 2026",
+    "kind": "Scientific evidence",
+    "evidence": "Professional safety guidance",
+    "url": "https://www.acog.org/womens-health/faqs/ectopic-pregnancy",
+    "passage": "Possible pregnancy with pelvic pain or bleeding needs prompt clinical assessment. Sudden severe pelvic or abdominal pain, shoulder pain, weakness, dizziness or fainting can signal an emergency. An app cannot rule out ectopic pregnancy.",
+    "tags": [
+      "pregnant",
+      "pregnancy",
+      "pelvic",
+      "cramps",
+      "bleeding",
+      "fainting"
+    ],
+    "permission": "original-summary",
+    "reviewed": "2026-10-24"
   }
 ]

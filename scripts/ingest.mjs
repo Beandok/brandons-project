@@ -11,7 +11,7 @@ const sql=postgres(process.env.DATABASE_URL,{prepare:false,max:1});
 try {
  await sql.unsafe(await fs.readFile(new URL('../data/schema.sql',import.meta.url),'utf8'));
  for(const doc of docs) {
- if(!['original-summary','licensed','public-domain'].includes(doc.permission)||!doc.id||!doc.passage||!doc.title||!doc.author||!doc.evidence||!Array.isArray(doc.tags)||!['Scientific evidence','Ray Peat’s position','Community interpretation'].includes(doc.kind)||!doc.url?.startsWith('https://')) throw new Error('Invalid source metadata or missing permission');
+ if(!['original-summary','licensed','public-domain'].includes(doc.permission)||!doc.id||!doc.passage||!doc.title||!doc.author||!doc.evidence||!Array.isArray(doc.tags)||!['Scientific evidence',"Ray Peat's position",'Community interpretation'].includes(doc.kind)||!doc.url?.startsWith('https://')) throw new Error('Invalid source metadata or missing permission');
  const response=await fetch('https://api.openai.com/v1/embeddings',{method:'POST',headers:{Authorization:`Bearer ${process.env.OPENAI_API_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({model:'text-embedding-3-small',input:doc.passage})});
  if(!response.ok) throw new Error(`Embedding failed: ${response.status}`);
  const result=await response.json();
